@@ -26,10 +26,10 @@ jobs:
         docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-flask-app:v2 .
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-flask-app:v2
       env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
         
     - name: Run Docker container
       run: |
-        docker run -d -p 8080:80 ${{ secrets.DOCKER_USERNAME }}/my-flask-app:v2
+        docker run -d -p 8080:80 ${{ secrets.DOCKER_HUB_USERNAME }}/my-flask-app:v2
     
